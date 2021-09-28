@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DistanceMatrix, sampleResultDistances } from './testLocations';
+import { DistanceMatrix, sampleResultDistances } from '../assets/testFolder/testLocations';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,13 @@ export class DistanceParsingService {
     matrix.rows.forEach( row => {
       let distDict = [];
       row.elements.forEach(element => {
-        distDict.push(element.distance);
+        distDict.push(element.distance.value);
       });
       this.distanceDict.push(distDict);
-      console.log('index of location',this.distanceDict.indexOf(distDict),  this.getIndex(this.distanceDict.indexOf(distDict), matrix))
+      console.log('index of location', this.distanceDict.indexOf(distDict))
     });
-    console.log('distance dict', this.distanceDict);
+    console.log('distance dict', JSON.stringify(this.distanceDict));
+    console.log('get address list: ', JSON.stringify(this.getIndexMap(matrix)))
   }
 
   getIndexMap(matrix: DistanceMatrix) {

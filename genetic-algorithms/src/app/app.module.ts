@@ -14,7 +14,7 @@ import { AgmDirectionModule } from 'agm-direction';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBk6x6NLgnPtLmpDi_cXSGHStdBuKtL3nc'
+      apiKey: 'AIzaSyARAW4ff9g3F_r5KLsdtXgFdgup-DfGNRA'
     }),
     AppRoutingModule,
     GoogleMapsModule,

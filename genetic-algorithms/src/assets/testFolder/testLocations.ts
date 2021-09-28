@@ -27,6 +27,9 @@ export class location {
     lat: number
     lng: number
 }
+// New alpha at gen # 114663 :  12507185
+// [3, 9, 6, 0, 7, 1, 5, 4, 8, 2]
+export const optimalRoute = [3, 9, 6, 0, 7, 1, 5, 4, 8, 2]
 
 export const mockLocationsList: location[] = [seattle, minneapolis_art_garden, austin_texas, 
 grand_canyon, empire_state_building, canton_ohio, google_hq, mount_rushmore, outer_banks, las_vegas]
