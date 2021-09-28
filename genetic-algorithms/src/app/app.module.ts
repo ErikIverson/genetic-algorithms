@@ -6,15 +6,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgmDirectionModule } from 'agm-direction';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyARAW4ff9g3F_r5KLsdtXgFdgup-DfGNRA'
+      apiKey: 'AIzaSyA6Z_iEGM5IvLCKSDUeToQVCcTZFOD1lno',
+      libraries: ['places']
     }),
     AppRoutingModule,
     GoogleMapsModule,

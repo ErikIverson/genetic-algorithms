@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DistanceMatrix, sampleResultDistances } from '../assets/testFolder/testLocations';
+import { DistanceMatrix, sampleResultDistances } from '../../assets/testFolder/testLocations';
 
 @Injectable({
   providedIn: 'root'

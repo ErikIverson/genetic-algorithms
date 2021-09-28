@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DistanceParsingService } from './distance-parsing.service';
-import { sampleResultDistances } from '../assets/testFolder/testLocations';
+import { sampleResultDistances } from '../../assets/testFolder/testLocations';
 
 @Injectable({
   providedIn: 'root'
