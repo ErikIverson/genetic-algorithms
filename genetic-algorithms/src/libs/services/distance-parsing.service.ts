@@ -17,10 +17,9 @@ export class DistanceParsingService {
         distDict.push(element.distance.value);
       });
       this.distanceDict.push(distDict);
-      console.log('index of location', this.distanceDict.indexOf(distDict))
     });
     console.log('distance dict', JSON.stringify(this.distanceDict));
-    console.log('get address list: ', JSON.stringify(this.getIndexMap(matrix)))
+    console.log('address list: ', JSON.stringify(this.getIndexMap(matrix)))
   }
 
   getIndexMap(matrix: DistanceMatrix) {

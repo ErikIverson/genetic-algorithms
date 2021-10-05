@@ -12,10 +12,7 @@ export class OptimizationService {
 
   constructor(
     private distanceParser: DistanceParsingService
-  ) {
-    this.distanceDict = this.distanceParser.parse(sampleResultDistances);
-  
-   }
+  ) { }
 
    getRandomString(len): any[] {
      let dna = [];
