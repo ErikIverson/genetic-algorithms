@@ -1,0 +1,8 @@
+<h2>Locations: </h2>
+<mat-list role="list" *ngIf="listService.places.length > 0">
+    <mat-list-item 
+        *ngFor="let place of listService.places" role="listitem">{{place.name}}
+        <button mat-button (click)="listService.deletePlace(place)">Remove</button>
+    </mat-list-item>
+    <button mat-raised-button (click)="listService.clear()" >Clear</button>
+</mat-list>

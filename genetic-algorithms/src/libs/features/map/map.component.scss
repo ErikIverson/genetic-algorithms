@@ -1,0 +1,41 @@
+agm-map {
+    height: 600px;
+    width: 800px;
+  }
+
+.form-group {
+    width: 750px;
+    margin: 20px auto;
+    display: inline-flexbox;
+}
+
+
+.map-div {
+    display: flex;
+    justify-content: center;
+}
+
+.optimize {
+    margin-top: 20px;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+}
+
+.pageTitle {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.locationsList {
+    position: absolute;
+    left: 50px;
+}
+
+
+
+
+
+
+

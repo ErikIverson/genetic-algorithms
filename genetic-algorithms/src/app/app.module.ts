@@ -6,19 +6,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgmDirectionModule } from 'agm-direction';
+import { MapComponent } from '../libs/features/map/map.component';
+import { LocationsListComponent } from '../libs/features/locations-list/locations-list.component';
+import { MatListModule } from '@angular/material/list'
+import { MatButtonModule } from '@angular/material/button'
+import { apiKey } from './secrets/secret.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapComponent,
+    LocationsListComponent
   ],
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBk6x6NLgnPtLmpDi_cXSGHStdBuKtL3nc'
+      apiKey:  apiKey,
+      libraries: ['places']
     }),
     AppRoutingModule,
     GoogleMapsModule,
-    AgmDirectionModule
+    AgmDirectionModule,
+    MatListModule,
+    MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
