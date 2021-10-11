@@ -1,8 +1,14 @@
 {
-    "/maps/api/*": {
-      "target": "https://maps.googleapis.com",
-      "secure": false,
-      "logLevel": "debug",
-      "changeOrigin": true
+  "/optimize-path/*": {
+    "target": "https://us-central1-genetic-algorithms-326219.cloudfunctions.net",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/maps/api/*": {
+    "target": "https://maps.googleapis.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
   }
 }

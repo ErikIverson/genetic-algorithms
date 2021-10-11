@@ -29,7 +29,7 @@ export class MapComponent implements OnInit {
   zoom: number;
   address: string;
   cityName: string;
-
+  distanceMatrix = this.distanceParser.parse(sampleResultDistances);
   private geoCoder;
   
 
@@ -92,12 +92,12 @@ export class MapComponent implements OnInit {
     this.lines.push(mockLocationsList[route[0]]);
   }
 
-  async showHistory() {
-    for (let i in litterHistory5) {
+  async showHistory(litterHistory) {
+    for (let i in litterHistory) {
       await this.delay(100)
-      this.addLocations(litterHistory5[i][0])
+      this.addLocations(litterHistory[i][0])
       console.log('Gen: ', i)
-      console.log('Distance: ', litterHistory5[i][1])
+      console.log('Distance: ', litterHistory[i][1])
     }
   }
 
@@ -124,7 +124,33 @@ export class MapComponent implements OnInit {
   }
 
   getDistanceMatrix() {
-    return this.callDistanceMatrix$().subscribe((matrix) => console.log(this.distanceParser.parse(matrix)), error => console.error(error)).unsubscribe()
+    return this.callDistanceMatrix$().subscribe((matrix) => {
+      this.distanceMatrix = this.distanceParser.parse(matrix)
+      console.log(this.distanceMatrix)}, error => console.error(error))
+  }
+
+  callOptimizePath$() {
+    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('Content-Type', 'application/json')
+    const params = new HttpParams().set('distance_dict', (JSON.stringify(this.distanceMatrix)))
+    console.log(JSON.stringify(this.distanceMatrix))
+    return this.httpService.post("/optimize-path", {
+      headers: headers,
+      params: params,
+    })
+  }
+
+  getOptimizedPath() {
+    console.log(this.distanceMatrix)
+    if (this.distanceMatrix) {
+      return this.callOptimizePath$().subscribe((litterHistory) => {
+        console.log(litterHistory);
+        this.showHistory(litterHistory);
+      })
+    }
+    else {
+      console.error('distance matrix is empty! Can\'t call optimizePaths')
+      return null
+    }
   }
 
   // Get Current Location Coordinates
