@@ -12,12 +12,18 @@ import { MatListModule } from '@angular/material/list'
 import { MatButtonModule } from '@angular/material/button'
 import { apiKey } from './secrets/secret.service'
 import { HttpClientModule } from '@angular/common/http';
+import { HomegridComponent } from './homegrid/homegrid.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    LocationsListComponent
+    LocationsListComponent,
+    HomegridComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatButtonModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
