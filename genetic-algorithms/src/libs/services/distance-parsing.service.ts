@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DistanceMatrix, sampleResultDistances } from '../../assets/testFolder/testLocations';
+import { DistanceMatrix } from '../../assets/testFolder/testLocations';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class DistanceParsingService {
     });
     console.log('distance dict', JSON.stringify(this.distanceDict));
     console.log('address list: ', JSON.stringify(this.getIndexMap(matrix)))
-    return this.distanceDict
+    return this.distanceDict;
   }
 
   getIndexMap(matrix: DistanceMatrix) {

@@ -86,7 +86,7 @@ export class MapComponent implements OnInit {
 
   async optimizePath() {
     const distance_dict = await this.getDistanceMatrix();
-    return this.httpService.get<
+    return this.httpService.get<any[]>('')
   }
 
   // Get Current Location Coordinates
