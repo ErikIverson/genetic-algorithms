@@ -12,14 +12,14 @@
     </agm-marker>
     <agm-polyline  [editable]="false">
         <agm-polyline-point *ngFor="let data of lines"
-        [latitude]="data.lat"
-        [longitude]="data.lng">
+        [latitude]="data.latitude"
+        [longitude]="data.longitude">
         </agm-polyline-point>
     </agm-polyline>
     </agm-map>
   </div>
 
   <div class="optimize" >
-      <button (click)="getDistanceMatrix()">Optimize my path!</button>
+      <button (click)="getOptimizedPath()">Optimize my path!</button>
   </div>
   
