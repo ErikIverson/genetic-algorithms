@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MapComponent } from '../libs/features/map/map.component';
-import { HomegridComponent } from './homegrid/homegrid.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { HomegridComponent } from '../libs/features/homegrid/homegrid.component';
+import { NavbarComponent } from '../libs/features/navbar/navbar.component';
 
 const routes: Routes = [
   {

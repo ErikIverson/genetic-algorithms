@@ -1,0 +1,14 @@
+.form-group {
+    display: grid;
+    grid-template: 1fr auto / 1fr;
+    width: 500px;
+}
+
+.textInput {
+    grid-row: 1 / 2;
+}
+
+.submitBtn {
+    grid-row: 2 / 2;
+    margin-top: 10px;
+}

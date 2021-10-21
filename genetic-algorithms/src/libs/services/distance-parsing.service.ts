@@ -20,6 +20,7 @@ export class DistanceParsingService {
     });
     console.log('distance dict', JSON.stringify(this.distanceDict));
     console.log('address list: ', JSON.stringify(this.getIndexMap(matrix)))
+    return this.distanceDict
   }
 
   getIndexMap(matrix: DistanceMatrix) {

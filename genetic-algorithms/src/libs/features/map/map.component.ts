@@ -1,19 +1,11 @@
-import { Component, NgZone, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { DistanceParsingService } from '../../services/distance-parsing.service';
-import { OptimizationService } from '../../services/optimization.service';
-import { DistanceMatrix, mockLocationsList, sampleResultDistances } from '../../../assets/testFolder/testLocations';
-import { litterHistory, litterHistory5 } from '../../../assets/testFolder/litter-history';
-import { MapsAPILoader, MouseEvent } from '@agm/core';
-import { ListService } from '../locations-list/list.service';
+import { DistanceMatrix, mockLocationsList } from '../../../assets/testFolder/testLocations';
+import { litterHistory5 } from '../../../assets/testFolder/litter-history';
+import { MapsAPILoader } from '@agm/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { apiKey } from 'src/app/secrets/secret.service';
-import { Subscription } from 'rxjs';
-
-export interface locationObject {
-  name: string,
-  longitude: number,
-  latitude: number
-}
+import { apiKey } from 'src/libs/services/secrets/secret.service';
+import { ControlService } from 'src/libs/services/control.service';
 
 @Component({
   selector: 'app-map',
@@ -21,68 +13,33 @@ export interface locationObject {
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+
+  @Input() searchString: string;
+
   title = 'Genetic Algorithms';
   latitude: number;
   longitude: number;
   lines = [];
-  locationList: locationObject[] = [];
   zoom: number;
   address: string;
   cityName: string;
 
   private geoCoder;
-  
 
   ngOnInit() {
-    //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
-
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.cityName = place.formatted_address
-          this.zoom = 12;
-        });
-      });
-    });
+    })
   }
-
-  @ViewChild('search')
-  public searchElementRef: ElementRef;
 
   constructor( 
    private distanceParser: DistanceParsingService,
    private mapsAPILoader: MapsAPILoader,
    private ngZone: NgZone,
-   public listService: ListService,
-   private httpService: HttpClient
+   private httpService: HttpClient,
+   public controlService: ControlService
   ) {}
-
-  addToList() {
-    this.listService.addPlace({
-      name: this.cityName,
-      longitude: this.longitude,
-      latitude: this.latitude
-    })
-    console.log(this.listService.places)
-  }
-
-  clearList(lat, lng) {
-    this.locationList = []
-  }
 
   addLocations(route) {
     this.lines = []
@@ -106,7 +63,7 @@ export class MapComponent implements OnInit {
   }
 
   getHttpRequestBody(): string {
-    let origins = this.listService.places.map(place => place.name);
+    let origins = this.controlService.locationsList.map(place => place.name);
     const reqBody = origins.join(' | ');
     console.log(reqBody);
     return reqBody
@@ -123,8 +80,13 @@ export class MapComponent implements OnInit {
     })
   }
 
-  getDistanceMatrix() {
-    return this.callDistanceMatrix$().subscribe((matrix) => console.log(this.distanceParser.parse(matrix)), error => console.error(error)).unsubscribe()
+  async getDistanceMatrix() {
+    return this.callDistanceMatrix$().subscribe((matrix) => console.log(this.distanceParser.parse(matrix)), error => console.error(error))
+  }
+
+  async optimizePath() {
+    const distance_dict = await this.getDistanceMatrix();
+    return this.httpService.get<
   }
 
   // Get Current Location Coordinates
