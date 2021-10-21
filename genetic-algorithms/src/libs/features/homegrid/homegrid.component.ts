@@ -2,14 +2,16 @@ import { Component } from '@angular/core';
 import { ControlService } from 'src/libs/services/control.service';
 
 @Component({
-  selector: 'app-locations-list',
-  templateUrl: './locations-list.component.html',
-  styleUrls: ['./locations-list.component.scss']
+  selector: 'app-homegrid',
+  templateUrl: './homegrid.component.html',
+  styleUrls: ['./homegrid.component.scss']
 })
-export class LocationsListComponent {
+export class HomegridComponent  {
 
   constructor(
     public controlService: ControlService
   ) { }
+
+  
 
 }

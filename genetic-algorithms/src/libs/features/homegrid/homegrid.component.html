@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <header class="header">
+        <div class="searchDiv">
+            <app-search-bar 
+                [latitude]="controlService.latitude" 
+                [longitude]="controlService.longitude"
+                [cityName]="controlService.cityName" >
+            </app-search-bar>
+        </div>
+
+    </header>
+
+    <div class="left">
+        <div class="listDiv">
+            <app-locations-list></app-locations-list>
+        </div>
+
+    </div>
+    
+    <div class="center">
+        <div class="agm-map">
+            <app-map 
+                [searchString]="controlService.searchString">
+            </app-map>
+        </div>
+    </div>
+    
+    <div class="right">
+        <div class="outputDiv">
+            <app-output-console></app-output-console>
+        </div>
+
+    </div>
+    
+    <div class="footer">
+        <div class="timelineDiv">
+            <app-timeline></app-timeline>
+        </div>
+        
+    </div>
+</div>
