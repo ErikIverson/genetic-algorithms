@@ -1,6 +1,6 @@
 agm-map {
-    height: 400px;
-    width: 800px;
+    height: 100vh;
+    width: 100vw;
   }
 
 .form-group {
@@ -11,9 +11,8 @@ agm-map {
 
 
 .map-div {
-    display: flex;
+    position: absolute;
     justify-content: center;
-
 }
 
 .optimize {

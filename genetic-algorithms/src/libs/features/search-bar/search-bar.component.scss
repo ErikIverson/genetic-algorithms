@@ -1,14 +1,17 @@
 .form-group {
-    display: grid;
-    grid-template: 1fr auto / 1fr;
-    width: 500px;
+    width: 100%;
+    margin: 0;
+    display: flexbox;
 }
 
-.textInput {
-    grid-row: 1 / 2;
+.form-control {
+    left: 10px;
+    width: 80%;
 }
 
 .submitBtn {
-    grid-row: 2 / 2;
-    margin-top: 10px;
+    position: absolute;
+    left: 82%;
+    width: 15%;
+    bottom: 12px;
 }

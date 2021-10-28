@@ -4,9 +4,6 @@
 }
 .navbar {
     height: 10%;
-}
-
-.container {
-    display: grid;
-    grid-template: 1fr;
+    position: absolute;
+    z-index: 1000;
 }

@@ -62,4 +62,8 @@ export class SearchBarComponent implements OnInit {
     console.log(this.controlService.locationsList);
   }
 
+  getOptimizedPath() {
+    this.controlService.getOptimizedPath()
+  }
+
 }

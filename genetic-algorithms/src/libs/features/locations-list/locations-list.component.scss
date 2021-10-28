@@ -4,17 +4,19 @@
 }
 
 .header {
-    text-decoration: underline;
+    margin: 0 auto;
 }
 mat-list {
-    width: max-content;
+    width: 100%;
     padding: 20px;
 }
 mat-list-item {
-    width: max-content;
-    border: 1px solid black;
+    width: 100%;
+    padding-top: 10px;
 }
 
 button {
     margin-left: 10px;
+    position: absolute;
+    right: 0;
 }

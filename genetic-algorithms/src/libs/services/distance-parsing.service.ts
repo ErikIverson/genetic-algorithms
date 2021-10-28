@@ -11,6 +11,7 @@ export class DistanceParsingService {
   constructor() { }
 
   parse(matrix: DistanceMatrix): any {
+    this.distanceDict = []
     matrix.rows.forEach( row => {
       let distDict = [];
       row.elements.forEach(element => {
