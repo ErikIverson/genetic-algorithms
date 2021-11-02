@@ -5,3 +5,8 @@
 <div class="searchBar">
     <app-search-bar></app-search-bar>
 </div>
+
+<div *ngIf="controlService.locationsList.length > 0" class="locationsList">
+    <app-locations-list>
+    </app-locations-list>
+</div>

@@ -8,10 +8,22 @@
     z-index: 100;
     border: 1px solid black;
     padding: 10px;
-    width: 60%;
-    left: 20%;
-    background-color: lightgray;
+    min-width: 600px;
+    width: 50%;
+    left: 25%;
+    background-color: whitesmoke;
     border-radius: 10px;
 }
 
+.locationsList {
+    position: absolute;
+    width: max-content;
+    top: 30%;
+    left: 2%;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+}
 

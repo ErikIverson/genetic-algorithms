@@ -6,15 +6,15 @@
         [longitude]="data.longitude"
         [label]="controlService.getCityIndex(data)">
     </agm-marker>
-    <agm-marker 
+    <agm-marker *ngIf="controlService.latitude && controlService.longitude" 
         [latitude]="controlService.latitude"
         [longitude]="controlService.longitude">
     </agm-marker>
-    <agm-polyline  [editable]="false">
-        <agm-polyline-point *ngFor="let data of controlService.lines"
-        [latitude]="data.latitude"
-        [longitude]="data.longitude">
-        </agm-polyline-point>
+    <agm-polyline *ngIf="controlService.showingHistory" [editable]="false">
+        <agm-polyline-point  *ngFor="let data of controlService.lines"
+          [latitude]="data.latitude"
+          [longitude]="data.longitude">
+        </agm-polyline-point>        
     </agm-polyline>
     </agm-map>
   </div>

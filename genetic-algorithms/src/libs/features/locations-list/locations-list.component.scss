@@ -1,22 +1,39 @@
 
 .column-wrapper {
-    display: grid;
-}
-
-.header {
-    margin: 0 auto;
+    width: max-content;
+    overflow-y: auto;
+    max-height: 450px;
 }
 mat-list {
     width: 100%;
     padding: 20px;
 }
-mat-list-item {
-    width: 100%;
+.item {
+    max-width: 250px;
     padding-top: 10px;
+    margin-right: 30px;
 }
 
 button {
     margin-left: 10px;
-    position: absolute;
+    position: relative;
     right: 0;
 }
+
+.clearBtn {
+    width: 50%;
+    margin-top: 5px;
+    margin-left: 25%;
+    margin-bottom: 5px;
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+.xBtn {
+    position:absolute;
+    right: 0;
+}
+
+

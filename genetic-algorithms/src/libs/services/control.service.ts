@@ -22,6 +22,7 @@ export class ControlService {
   longitude: number;
   cityName: string;
   lines = [];
+  showingHistory = false;
 
   locationsList: locationObject[] = [{
     latitude: 40.7127753,
@@ -55,6 +56,7 @@ export class ControlService {
 
   clear() {
     this.locationsList = [];
+    this.showingHistory = false;
   }
 
   addLocations(route) {
@@ -70,12 +72,19 @@ export class ControlService {
   }
 
   async showHistory(litterHistory) {
-    for (let i in litterHistory) {
-      await this.delay(100)
-      this.addLocations(litterHistory[i][0])
-      console.log('Gen: ', i)
-      console.log('Path: ', litterHistory[i][0])
-      console.log('Distance: ', litterHistory[i][1])
+    this.showingHistory = true;
+    while (this.showingHistory) {
+      for (let i in litterHistory) {
+        if (!this.showingHistory) {
+          break
+        }
+        await this.delay(100)
+        this.addLocations(litterHistory[i][0])
+        console.log('Gen: ', i)
+        console.log('Path: ', litterHistory[i][0])
+        console.log('Distance: ', litterHistory[i][1])
+      }
+      this.showingHistory = false;
     }
   }
 
@@ -97,21 +106,28 @@ export class ControlService {
     })
   }
 
-  getDistanceMatrix() {
-    return this.callDistanceMatrix$().pipe(take(1)).subscribe((matrix) => console.log(this.distanceParser.parse(matrix)), error => console.error(error))
-  }
+  // getDistanceMatrix() {
+  //   return this.callDistanceMatrix$().pipe(take(1)).subscribe((matrix) => console.log(this.distanceParser.parse(matrix)), error => console.error(error))
+  // }
 
   callOptimizePath$(distance_dict) {
+  
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
     const params = new HttpParams().set('distance_dict', JSON.stringify(distance_dict)).set('batch_size', 400).set('max_generations', 150).set('mutation_odds', 0.01)
     console.log('request: ', params)
-    return this.httpService.post<any[]>('/optimize-path', {
+     if (distance_dict !== []) {
+      return this.httpService.post<any[]>('/optimize-path', {
       headers: headers, 
       params: params
-    })
+      })
+     } else return null
   }
 
   getOptimizedPath() {
+    if (this.locationsList.length > 10) {
+      console.log('Max 10 Locations Allowed');
+      return
+    }
     this.callDistanceMatrix$().pipe(switchMap((distance_dict) => 
       this.callOptimizePath$(this.distanceParser.parse(distance_dict)))).subscribe((litter) => {
         console.log(litter);

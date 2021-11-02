@@ -14,6 +14,7 @@ export class SearchBarComponent implements OnInit {
   @Input() longitude: number;
 
   @Output() searchString: string;
+  searchValue = '';
   zoom: number;
 
   constructor(
@@ -43,6 +44,7 @@ export class SearchBarComponent implements OnInit {
           this.controlService.longitude = place.geometry.location.lng();
           this.controlService.cityName = place.formatted_address;
           this.zoom = 12;
+          this.searchElementRef.nativeElement.innerText = '';
     })
   })
 })
@@ -54,10 +56,19 @@ export class SearchBarComponent implements OnInit {
   }
 
   addToList() {
+    console.log(this.searchElementRef.nativeElement.innerText)
+    this.searchElementRef.nativeElement.innerText = '';
+    if (this.controlService.locationsList.length > 10) {
+      console.log('Max 10 Locations Allowed')
+      return
+    } else if (this.controlService.locationsList.find((place) => place.name == this.controlService.cityName)) {
+      console.log('Place is already on the list.')
+      return
+    }
     this.controlService.locationsList.push({
-      name: this.cityName,
-      longitude: this.longitude,
-      latitude: this.latitude
+      name: this.controlService.cityName,
+      longitude: this.controlService.longitude,
+      latitude: this.controlService.latitude
     })
     console.log(this.controlService.locationsList);
   }

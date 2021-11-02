@@ -1,10 +1,14 @@
 <div class="column-wrapper">
-    <h2 class="header">Locations: </h2>
-    <mat-selection-list role="list" *ngIf="controlService.locationsList.length > 0">
-        <mat-list-item 
-            *ngFor="let place of controlService.locationsList" role="listitem"> {{controlService.getCityIndex(place) + ") " + place.name}}
-            <button mat-button (click)="controlService.deletePlace(place)">Remove</button>
+    <div class="header">
+        <h2>Locations: </h2>
+        <button mat-stroked-button (click)="controlService.getOptimizedPath()">Optimize my trip!</button>
+    </div>
+    
+    <mat-selection-list role="list" *ngIf="controlService.locationsList.length > 0" class="scrollable">
+        <mat-list-item class="item"
+            *ngFor="let place of controlService.locationsList" role="listitem"> {{controlService.getCityIndex(place) + ") " + place.name.split(',').slice(0,2)}}
+            <button mat-icon-button class="xBtn" (click)="controlService.deletePlace(place)">x</button>
         </mat-list-item>
-        <button mat-raised-button (click)="controlService.clear()" >Clear</button>
+        <button mat-raised-button class="clearBtn" (click)="controlService.clear()" >Clear</button>
     </mat-selection-list>
 </div>
