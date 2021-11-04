@@ -27,3 +27,15 @@
 
 }
 
+.timerline {
+    z-index: 100;
+    top: 30%;
+    right: 5%;
+    position: absolute;
+    border: 1px solid black;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    height: max-content;
+}
+

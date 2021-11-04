@@ -10,3 +10,7 @@
     <app-locations-list>
     </app-locations-list>
 </div>
+
+<div *ngIf="controlService.currentGen > 0" class="timerline" >
+    <app-timeline></app-timeline>
+</div>

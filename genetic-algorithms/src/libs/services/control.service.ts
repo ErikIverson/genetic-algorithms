@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { apiKey } from 'src/libs/services/secrets/secret.service';
 import { DistanceParsingService } from './distance-parsing.service';
 import { DistanceMatrix } from '../../assets/testFolder/testLocations';
-import { switchMap, take } from 'rxjs/operators'
+import { switchMap, take } from 'rxjs/operators';
+import { litterHistory } from '../../assets/testFolder/litter-history';
 
 export interface locationObject {
   name: string,
@@ -23,6 +24,9 @@ export class ControlService {
   cityName: string;
   lines = [];
   showingHistory = false;
+
+  currentGen: number; //0;
+  currentLitter;;  //any[];
 
   locationsList: locationObject[] = [{
     latitude: 40.7127753,
@@ -60,6 +64,7 @@ export class ControlService {
   }
 
   addLocations(route) {
+    console.log(route)
     this.lines = []
     for (let index of route) {
       this.lines.push(this.locationsList[index])
@@ -81,11 +86,13 @@ export class ControlService {
         await this.delay(100)
         this.addLocations(litterHistory[i][0])
         console.log('Gen: ', i)
+        this.currentGen = Number(i);
         console.log('Path: ', litterHistory[i][0])
         console.log('Distance: ', litterHistory[i][1])
       }
       this.showingHistory = false;
     }
+    
   }
 
   getHttpRequestBody(): string {
@@ -124,6 +131,8 @@ export class ControlService {
   }
 
   getOptimizedPath() {
+  
+    this.showingHistory = false;
     if (this.locationsList.length > 10) {
       console.log('Max 10 Locations Allowed');
       return
@@ -133,6 +142,7 @@ export class ControlService {
         console.log(litter);
         console.log('Best path', litter[litter.length - 1]);
         this.showHistory(litter);
+        this.currentLitter = litter;
       })
   }
 

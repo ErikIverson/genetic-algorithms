@@ -1,1 +1,13 @@
-<p>timeline works!</p>
+<div class="timelineDiv">
+    <p class="generations">Generation: {{controlService.currentGen}}</p>
+    <mat-slider 
+    vertical invert min="1" 
+    [max]="controlService.currentLitter.length" 
+    step="1" 
+    [value]="controlService.currentGen"
+    (change)="updateCurrentGen($event)"
+    class="slider" thumbLabel>
+    </mat-slider>
+    <p class="distance1">Total Distance:</p>
+    <p class="distance2">{{controlService.currentLitter[controlService.currentGen - 1][1].toLocaleString()}} km</p>
+</div>
