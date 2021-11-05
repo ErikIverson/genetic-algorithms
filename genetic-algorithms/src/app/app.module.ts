@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { SearchBarComponent } from '../libs/features/search-bar/search-bar.component';
 import { OutputConsoleComponent } from '../libs/features/output-console/output-console.component';
@@ -54,6 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
