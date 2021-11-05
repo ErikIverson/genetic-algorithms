@@ -38,3 +38,15 @@ $genetic-algorithms-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body {  min-width:600px; } 
+
+@font-face {
+  font-family: "Earth-Orbiter";
+  src: local("Earth-Orbiter"), url(./assets/fonts/earthorbiterbold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Squid-Game";
+  src: local("Squid-Game"), url(./assets/fonts/squidGame.ttf) format("truetype");
+}
+
+

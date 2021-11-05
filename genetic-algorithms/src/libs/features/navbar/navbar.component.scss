@@ -1,9 +1,45 @@
 .title {
-    font-size: x-large;
+    font-size: 40px;
+    font-family: 'Squid-Game';
     margin: 10px auto;
+    width: max-content;
 }
 .navbar {
     height: 10%;
     position: absolute;
     z-index: 1000;
+}
+
+.example-icon {
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    &:focus {
+        outline: none !important;
+        outline-style: none !important;
+      }
+    
+}
+
+.menuIcon {
+    font-size: 30px;
+    margin-left: 0;
+}
+
+
+.dropDownMenu {
+    z-index: 100;
+}
+
+.projectTab {
+    left: 100px;
+}
+
+.algorithmTab {
+    right: 100px;
+}
+
+.tab {
+    position: absolute;
+    text-decoration: underline;
 }
