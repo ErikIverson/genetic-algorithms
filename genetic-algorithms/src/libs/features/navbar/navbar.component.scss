@@ -32,14 +32,17 @@
 }
 
 .projectTab {
-    left: 100px;
+    left: 150px;
 }
 
 .algorithmTab {
-    right: 100px;
+    right: 150px;
 }
 
 .tab {
     position: absolute;
-    text-decoration: underline;
+}
+
+a {
+    color: black;
 }

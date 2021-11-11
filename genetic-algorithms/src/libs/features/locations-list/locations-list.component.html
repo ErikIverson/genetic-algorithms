@@ -1,7 +1,6 @@
 <div class="column-wrapper">
     <div class="header">
         <h2>Locations: </h2>
-        <button mat-stroked-button (click)="controlService.getOptimizedPath()">Optimize my trip!</button>
     </div>
     
     <mat-selection-list role="list" *ngIf="controlService.locationsList.length > 0" class="scrollable">

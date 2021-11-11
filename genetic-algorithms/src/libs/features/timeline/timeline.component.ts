@@ -16,7 +16,7 @@ export class TimelineComponent {
 
   updateCurrentGen(event) {
     this.controlService.currentGen = event.value;
-    this.controlService.addLocations(this.controlService.currentLitter[this.controlService.currentGen][0]);
+    this.controlService.addLocations(this.controlService.currentLitter[this.controlService.currentGen - 1][0]);
   }
 
 }

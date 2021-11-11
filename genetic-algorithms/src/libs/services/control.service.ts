@@ -26,7 +26,7 @@ export class ControlService {
   showingHistory = false;
 
   currentGen: number; //0;
-  currentLitter;;  //any[];
+  currentLitter;  //any[];
 
   locationsList: locationObject[] = [{
     latitude: 40.7127753,
@@ -61,6 +61,8 @@ export class ControlService {
   clear() {
     this.locationsList = [];
     this.showingHistory = false;
+    this.currentGen = null;
+    this.currentLitter = null;
   }
 
   addLocations(route) {
