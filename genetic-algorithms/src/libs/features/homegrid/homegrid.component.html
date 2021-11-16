@@ -12,18 +12,18 @@
 </div>
 
 
-<button mat-stroked-button class="bigRed" color="primary" *ngIf="controlService.currentGen == null"
+<button mat-stroked-button class="bigRed" color="primary" *ngIf="!controlService.currentLitter"
     class="goButton"
     (click)="controlService.getOptimizedPath()" [disabled]="controlService.locationsList.length < 3">
     GO!
 </button>
 
 <button mat-stroked-button class="bigRed" color="primary" class="goButton"
-*ngIf="controlService.currentGen"
+*ngIf="controlService.currentLitter"
     (click)="controlService.clear()" >
     Reset
     </button>
 
-<div *ngIf="controlService.currentGen" class="timerline" >
+<div *ngIf="controlService.currentLitter" class="timerline" >
     <app-timeline></app-timeline>
 </div>
