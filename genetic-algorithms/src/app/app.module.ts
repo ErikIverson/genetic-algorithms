@@ -27,8 +27,8 @@ import { SearchBarComponent } from '../libs/features/search-bar/search-bar.compo
 import { OutputConsoleComponent } from '../libs/features/output-console/output-console.component';
 import { TimelineComponent } from '../libs/features/timeline/timeline.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProjectPageComponent } from './project-page/project-page.component';
-import { AlgorithmPageComponent } from './algorithm-page/algorithm-page.component';
+import { ProjectPageComponent } from '../libs/features/project-page/project-page.component';
+import { AlgorithmPageComponent } from '../libs/features/algorithm-page/algorithm-page.component';
 
 @NgModule({
   declarations: [

@@ -43,10 +43,28 @@
             the Google Functions suite is very similar to AWS Lambda and so it was there that I would host my Python based genetic algorithm code.
         </article>
         <br>
-        <h4>Next</h4>
+        <h4>The Flow of Things</h4>
         <article class="article">
-             
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My goal was to make the main page as intuitive as possible in terms of selecting locations, parameters, and interpreting the results. I am, 
+            however, not an experience UX researcher so there may be some flaws. At first the user should recognize the layout as familiar to their standard Google Maps page, with a search bar
+            and a "submit" button. You'll notice the green "GO" button is disabled until the user selects at least 3 locations and at most 10 (Google Maps API limit). Once locations are added, 
+            the list component shows up on the left hand side, acting as a list and a legend for the place tags that are numbered on the map of listed locations. A user may remove one, or clear 
+            all of the locations pretty easily. Once the user has a satisfied list, they are able to get their optimized route by hitting the go button.
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Here's where the behind the scenes magic happens, after a validated submission, the list is parsed and formatted as the input for the Destination
+            Matrix API that is publicly available in the Google Cloud. This then immediately returns the so-called "distance-matrix" - a doubly nested list object with each of the n places distances
+            from itself to every other place in the list. And of course there will be a sole 0 in each one for mapping the place to itself. We then send this object to my custom function that also
+            happens to be hosted in the cloud via another http call. This one takes longer as it runs hundreds of generations with hundreds of dna in each one. But as a return value from this, we
+            get the full history of each generation's top performer, or most efficient route. On the screen, it will populate the timeline componenet on the right that displays the best route that
+            each generation returned. This then allows for the user to go back in the history of this algorithms evolution to see it progress and get more efficient over time.
         </article>
-        
     </main>
 </div>
+<!-- <img src="../../../assets/Pics/ai.jpg" class="image aiPic"> -->
+<img src="../../../assets/Pics/AngularJS.png" class="image angularPic">
+<img src="../../../assets/Pics/dna.jpg" class="image dnaPic">
+<img src="../../../assets/Pics/google-cloud.jpg" class="image gcPic">
+<img src="../../../assets/Pics/Google-Maps-logo.jpg" class="image gmlPic">
+<img src="../../../assets/Pics/ideas.png" class="image ideasPic">
+<img src="../../../assets/Pics/python.png" class="image pythonPic">
+<!-- <img src="../../../assets/Pics/background.png" style="position: absolute; width: 100%; z-index: 0; overflow-x: scroll;"> -->
