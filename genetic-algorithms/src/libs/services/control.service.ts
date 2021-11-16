@@ -18,31 +18,17 @@ export interface locationObject {
 export class ControlService {
   
   searchString: string;
-  
+  isLoading = false;
   latitude: number;
   longitude: number;
   cityName: string;
   lines = [];
   showingHistory = false;
-
+  showTimeline = false;
   currentGen: number; //0;
-  currentLitter;;  //any[];
+  currentLitter;  //any[];
 
-  locationsList: locationObject[] = [{
-    latitude: 40.7127753,
-    longitude: -74.0059728,
-    name: "New York, NY, USA"
-  },
-  {
-    latitude: 44.977753,
-    longitude: -93.2650108,
-    name: "Minneapolis, MN, USA"
-  },{
-    latitude: 30.267153,
-    longitude: -97.7430608,
-    name: "Austin, TX, USA"
-  }
-];
+  locationsList: locationObject[] = [];
 
   constructor(
     private httpService: HttpClient,
@@ -61,12 +47,17 @@ export class ControlService {
   clear() {
     this.locationsList = [];
     this.showingHistory = false;
+    this.currentGen = null;
+    this.currentLitter = null;
+    this.showTimeline = false;
+    this.lines = [];
   }
 
   addLocations(route) {
     console.log(route)
     this.lines = []
     for (let index of route) {
+      console.log(this.locationsList[index])
       this.lines.push(this.locationsList[index])
     }
     this.lines.push(this.locationsList[route[0]]);
@@ -78,6 +69,7 @@ export class ControlService {
 
   async showHistory(litterHistory) {
     this.showingHistory = true;
+    console.log(this.locationsList)
     while (this.showingHistory) {
       for (let i in litterHistory) {
         if (!this.showingHistory) {
@@ -85,6 +77,7 @@ export class ControlService {
         }
         await this.delay(100)
         this.addLocations(litterHistory[i][0])
+        this.showTimeline = true;
         console.log('Gen: ', i)
         this.currentGen = Number(i);
         console.log('Path: ', litterHistory[i][0])
@@ -131,7 +124,7 @@ export class ControlService {
   }
 
   getOptimizedPath() {
-  
+    this.isLoading = true;
     this.showingHistory = false;
     if (this.locationsList.length > 10) {
       console.log('Max 10 Locations Allowed');
@@ -143,7 +136,11 @@ export class ControlService {
         console.log('Best path', litter[litter.length - 1]);
         this.showHistory(litter);
         this.currentLitter = litter;
-      })
+        this.isLoading = false;
+      }, error => {
+        console.log(error)
+        this.isLoading = false;
+      });
   }
 
 }

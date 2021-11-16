@@ -21,11 +21,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { SearchBarComponent } from '../libs/features/search-bar/search-bar.component';
 import { OutputConsoleComponent } from '../libs/features/output-console/output-console.component';
 import { TimelineComponent } from '../libs/features/timeline/timeline.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectPageComponent } from './project-page/project-page.component';
+import { AlgorithmPageComponent } from './algorithm-page/algorithm-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     SearchBarComponent,
     OutputConsoleComponent,
-    TimelineComponent
+    TimelineComponent,
+    ProjectPageComponent,
+    AlgorithmPageComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatInputModule,
     MatSliderModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

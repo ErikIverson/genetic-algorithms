@@ -11,6 +11,19 @@
     </app-locations-list>
 </div>
 
-<div *ngIf="controlService.currentGen > 0" class="timerline" >
+
+<button mat-stroked-button class="bigRed" color="primary" *ngIf="!controlService.currentLitter"
+    class="goButton"
+    (click)="controlService.getOptimizedPath()" [disabled]="controlService.locationsList.length < 3">
+    GO!
+</button>
+
+<button mat-stroked-button class="bigRed" color="primary" class="goButton"
+*ngIf="controlService.currentLitter"
+    (click)="controlService.clear()" >
+    Reset
+    </button>
+
+<div *ngIf="controlService.currentLitter" class="timerline" >
     <app-timeline></app-timeline>
 </div>

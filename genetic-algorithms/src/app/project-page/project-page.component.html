@@ -1,0 +1,52 @@
+<div class = "centered">
+    <header class="header">About the Project</header>
+    <main class="main">
+        
+        <h4>The Problem</h4>
+        <article class="article">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a set of <span class="bolden">n</span> locations, what is the optimal route to visit each just <span class="italy" >once</span> and return to the starting point?
+        </article>
+        <br>
+        <h4>Inspiration</h4>
+        <article class="article">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Since the Fall semester of 2020, I've grown to become a huge Software Engineering nerd. It began when I took the S.E. course here at Drake University
+            and it blew my mind with the seemingly unlimited potential for creating all kinds of applications. I am a hard sciences kind of guy but I 
+            also crave an avenue for creativity which made Software Engineering the perfect fit. I had a great experience this past Summer to learn a million more things with 
+            a company called IDeaS Revenue Solutions. This internship confirmed for me that I was following my passion so I hope to continue this pursuit with a full time Software Engineering
+            role this coming May.<br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The initial inspiration for this capstone was based on the branch of artificial intelligence known as Genetic Algorithms. As it alludes to in the name, they 
+            are very much developed to mimic the biological evolutionary process. After spending a seriously rivoting semester in CS143 (the AI elective) with Professor Porter, I implored him to let me 
+            continue on this exploration - specifically with the unit we left off on last Spring - you guessed it, Genetic Algorithms.
+        </article>
+        <br>
+        <h4>Tech Stack & Proof of Concept</h4>
+        <article class="article">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In the Software Engineering lifecycle, one of the first things to do before committing to a large project, is to determine if it's going to be possible to complete it with the available
+            resources and knowledge. I spent a lot of time this Summer developing a web application with the popular framework, AngularJS. I figured I'll use that same framework for this project's 
+            frontend for the user interface, or UI. This framework runs on three main file types which are TypeScript (basically Javascript with some bonuses), HTML, and CSS. <br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The trickiest part that I had to confirm would be possible before starting, is the Google Maps integration. After some ~googling~, I found
+            a few super useful tutorials that demostrated use of an Angular x Google Maps library which makes it much easier to get started with. So I booted up a quick boilerplate Angular App,
+            imported this aptly named AGM library to see if indeed it was as simple as it looked. The tutorial required I sign up for a Google Cloud account so I can access their API's which
+            allow me to load an interactive map and search for places in the search bar. Using this account, I did generate a small map, drop a few location tags on it, and thus I concluded the Concept
+            to have been proven possible.
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Having been snooping around the Google Cloud APIs already, I happened to stumble upon another useful one called 'Distance Matrix' which can be
+            fed a list of locations in the world, and will return a matrix of each place's shortest distance in km to each other place. What luck! I did notice though that this was only possible
+            via non air travel transportation modes. So a Distance Matrix with New York and London in it would have "Zero Results" as the return value. Oh well, land travel will have to do. 
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now the final piece to this puzzle is of course the ACTUAL genetic algorithm that I must write and optimize. It would have been possible I'm sure
+            to simply write some functions within TypeScript and run it right there on site, but that's quite lazy and frankly not practical from a Full Stack software perspective. 
+            The much more exciting and realistic solution is to use the new age mode of development: a cloud-based microservice approach. This Summer we heavily relied on Amazon Web Services 
+            for this type of stuff, but as I mentioned a couple of times I had already found myself deep in the bowels of Google Cloud, so I figured I'll keep with this guy for now. Turns out,
+            the Google Functions suite is very similar to AWS Lambda and so it was there that I would host my Python based genetic algorithm code.
+        </article>
+        <br>
+        <h4>Next</h4>
+        <article class="article">
+             
+        </article>
+        
+    </main>
+</div>

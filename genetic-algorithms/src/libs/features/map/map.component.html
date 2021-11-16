@@ -10,7 +10,7 @@
         [latitude]="controlService.latitude"
         [longitude]="controlService.longitude">
     </agm-marker>
-    <agm-polyline *ngIf="controlService.showingHistory || controlService.currentLitter" [editable]="false">
+    <agm-polyline *ngIf="controlService.currentLitter" [editable]="false">
         <agm-polyline-point  *ngFor="let data of controlService.lines"
           [latitude]="data.latitude"
           [longitude]="data.longitude">

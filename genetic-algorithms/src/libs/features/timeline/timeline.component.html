@@ -1,4 +1,4 @@
-<div class="timelineDiv">
+<div class="timelineDiv" *ngIf="controlService.currentLitter">
     <p class="generations">Generation: {{controlService.currentGen}}</p>
     <mat-slider 
     vertical invert min="1" 
