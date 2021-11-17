@@ -57,7 +57,6 @@ export class ControlService {
     console.log(route)
     this.lines = []
     for (let index of route) {
-      console.log(this.locationsList[index])
       this.lines.push(this.locationsList[index])
     }
     this.lines.push(this.locationsList[route[0]]);

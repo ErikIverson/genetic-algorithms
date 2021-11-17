@@ -13,12 +13,12 @@
 
 
 <button mat-stroked-button class="bigRed" color="primary" *ngIf="!controlService.currentLitter"
-    class="goButton"
+    class="bigButton greenButton"
     (click)="controlService.getOptimizedPath()" [disabled]="controlService.locationsList.length < 3">
     GO!
 </button>
 
-<button mat-stroked-button class="bigRed" color="primary" class="goButton"
+<button mat-stroked-button class="bigRed" color="primary" class="bigButton yellowButton"
 *ngIf="controlService.currentLitter"
     (click)="controlService.clear()" >
     Reset
