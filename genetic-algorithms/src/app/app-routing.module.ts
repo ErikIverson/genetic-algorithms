@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MapComponent } from '../libs/features/map/map.component';
 import { HomegridComponent } from '../libs/features/homegrid/homegrid.component';
 import { NavbarComponent } from '../libs/features/navbar/navbar.component';
-import { ProjectPageComponent } from './project-page/project-page.component';
-import { AlgorithmPageComponent } from './algorithm-page/algorithm-page.component';
+import { ProjectPageComponent } from '../libs/features/project-page/project-page.component';
+import { AlgorithmPageComponent } from '../libs/features/algorithm-page/algorithm-page.component';
 
 const routes: Routes = [
   {

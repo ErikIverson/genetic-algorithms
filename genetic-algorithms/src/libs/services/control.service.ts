@@ -27,6 +27,9 @@ export class ControlService {
   showTimeline = false;
   currentGen: number; //0;
   currentLitter;  //any[];
+  batchSize;
+  mutationOdds;
+  maxGenerations;
 
   locationsList: locationObject[] = [];
 
@@ -57,7 +60,6 @@ export class ControlService {
     console.log(route)
     this.lines = []
     for (let index of route) {
-      console.log(this.locationsList[index])
       this.lines.push(this.locationsList[index])
     }
     this.lines.push(this.locationsList[route[0]]);
@@ -106,14 +108,9 @@ export class ControlService {
     })
   }
 
-  // getDistanceMatrix() {
-  //   return this.callDistanceMatrix$().pipe(take(1)).subscribe((matrix) => console.log(this.distanceParser.parse(matrix)), error => console.error(error))
-  // }
-
   callOptimizePath$(distance_dict) {
-  
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
-    const params = new HttpParams().set('distance_dict', JSON.stringify(distance_dict)).set('batch_size', 400).set('max_generations', 150).set('mutation_odds', 0.01)
+    const params = new HttpParams().set('distance_dict', JSON.stringify(distance_dict)).set('BATCH_SIZE', 400).set('MUTATION_ODDS', 0.02).set('MAX_GENERATIONS', 150)
     console.log('request: ', params)
      if (distance_dict !== []) {
       return this.httpService.post<any[]>('/optimize-path', {

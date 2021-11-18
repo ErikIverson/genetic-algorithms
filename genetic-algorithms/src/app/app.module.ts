@@ -22,13 +22,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SearchBarComponent } from '../libs/features/search-bar/search-bar.component';
 import { OutputConsoleComponent } from '../libs/features/output-console/output-console.component';
 import { TimelineComponent } from '../libs/features/timeline/timeline.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProjectPageComponent } from './project-page/project-page.component';
-import { AlgorithmPageComponent } from './algorithm-page/algorithm-page.component';
+import { ProjectPageComponent } from '../libs/features/project-page/project-page.component';
+import { AlgorithmPageComponent } from '../libs/features/algorithm-page/algorithm-page.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AlgorithmPageComponent } from './algorithm-page/algorithm-page.componen
     MatInputModule,
     MatSliderModule,
     MatMenuModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
