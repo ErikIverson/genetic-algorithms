@@ -8,6 +8,8 @@ import { ControlService } from 'src/libs/services/control.service';
 })
 export class HomegridComponent  {
 
+  
+
   constructor(
     public controlService: ControlService
   ) { }

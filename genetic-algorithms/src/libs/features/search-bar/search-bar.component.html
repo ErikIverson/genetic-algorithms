@@ -1,5 +1,23 @@
 <div class="form-group">
-    <label>Enter address:</label>
+    <form [formGroup]="reactiveForm">
+        <div class="batchDiv">
+        <label>Batch Size:</label>
+        <input formControlName="BATCH_SIZE" mat-input type="number" class="inputNumBatch" [defaultValue]="500" step="50" max="1000" min="100">
+    </div>
+
+    <div class="mutationDiv">
+        <label>Mutation Rate:</label>
+        <input formControlName="MUTATION_ODDS" mat-input type="number" class="inputNumMutation" [defaultValue]="0.01" step="0.01" max=".1" min=".01" >
+    </div>
+
+    <div class="maxGenDiv">
+        <label>Max Generations:</label>
+        <input formControlName="MAX_GENERATIONS" mat-input type="number" class="inputNumMaxGen" [defaultValue]="100" step="50" max="500" min="50">
+    </div>
+    </form>
+    
+    
+    <label style="font-weight: bold; font-size: large;" class="searchLabel">Enter address:</label>
     <input type="reset" class="form-control"
      (keydown.enter)="$event.preventDefault()" 
      placeholder="Search Location" 

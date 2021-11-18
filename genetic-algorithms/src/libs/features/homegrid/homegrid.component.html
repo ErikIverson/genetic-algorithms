@@ -11,14 +11,16 @@
     </app-locations-list>
 </div>
 
-
-<button mat-stroked-button class="bigRed" color="primary" *ngIf="!controlService.currentLitter"
-    class="bigButton greenButton"
+<div matTooltip="Must have at least 3 locations selected." [matTooltipDisabled]="!(controlService.locationsList.length < 3)">
+    <button mat-stroked-button *ngIf="!controlService.currentLitter"  
+    class="bigButton greenButton" 
     (click)="controlService.getOptimizedPath()" [disabled]="controlService.locationsList.length < 3">
     GO!
 </button>
+</div>
 
-<button mat-stroked-button class="bigRed" color="primary" class="bigButton yellowButton"
+
+<button mat-stroked-button class="bigButton yellowButton"
 *ngIf="controlService.currentLitter"
     (click)="controlService.clear()" >
     Reset

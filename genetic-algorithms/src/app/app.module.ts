@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SearchBarComponent } from '../libs/features/search-bar/search-bar.component';
 import { OutputConsoleComponent } from '../libs/features/output-console/output-console.component';
@@ -62,6 +63,7 @@ import { AlgorithmPageComponent } from '../libs/features/algorithm-page/algorith
     MatInputModule,
     MatSliderModule,
     MatMenuModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

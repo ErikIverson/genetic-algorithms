@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit, Input, Output,  ViewChild, ElementRef } from '@angular/core';
 import { ControlService } from 'src/libs/services/control.service';
 import { MapsAPILoader } from '@agm/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,8 +18,14 @@ export class SearchBarComponent implements OnInit {
   searchValue = '';
   zoom: number;
 
+  public reactiveForm = new FormGroup({
+    BATCH_SIZE: new FormControl(500),
+    MUTATION_ODDS: new FormControl(0.01),
+    MAX_GENERATIONS: new FormControl(100)
+  })
+
   constructor(
-    private controlService: ControlService,
+    public controlService: ControlService,
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader,
   ) { }
@@ -48,6 +55,12 @@ export class SearchBarComponent implements OnInit {
     })
   })
 })
+    this.reactiveForm.valueChanges.subscribe(selectedValue => {
+      this.controlService.batchSize = selectedValue.BATCH_SIZE
+      this.controlService.mutationOdds = selectedValue.MUTATION_ODDS
+      this.controlService.maxGenerations = selectedValue.MAX_GENERATIONS
+    })
+
 }
   
 

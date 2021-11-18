@@ -10,10 +10,50 @@
     width: 80%;
 }
 
+.searchLabel {
+    margin-top: 10px;
+}
+
 .submitBtn {
     position: absolute;
     left: 77%;
     width: 20%;
     min-width: max-content;
     bottom: 12px;
+}
+
+.batchDiv {
+    position: absolute;
+    left: 20%;
+    top: 12%;
+}
+
+.inputNumBatch {
+    margin-left: 5px;
+    width: 55px;
+    padding-left: 3px;
+}
+
+.mutationDiv {
+    position: absolute;
+    left: 40.5%;
+    top: 12%;
+}
+
+.inputNumMutation {
+    margin-left: 5px;
+    width: 60px;
+    padding-left: 3px;
+}
+
+.maxGenDiv {
+    position: absolute;
+    left: 65%;
+    top: 12%;
+}
+
+.inputNumMaxGen {
+    margin-left: 5px;
+    width: 55px;
+    padding-left: 3px;
 }
