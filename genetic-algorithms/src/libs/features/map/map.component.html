@@ -16,5 +16,10 @@
           [longitude]="data.longitude">
         </agm-polyline-point>        
     </agm-polyline>
+    <div *ngIf="controlService.directions">
+      <agm-direction  [origin]="controlService.directions.origin" [destination]="controlService.directions.destination"
+          [waypoints]="controlService.directions.waypoints"></agm-direction>
+    </div>
+    
     </agm-map>
   </div>

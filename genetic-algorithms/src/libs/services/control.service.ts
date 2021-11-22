@@ -27,9 +27,18 @@ export class ControlService {
   showTimeline = false;
   currentGen: number; //0;
   currentLitter;  //any[];
-  batchSize;
-  mutationOdds;
-  maxGenerations;
+  batchSize = 500;
+  mutationOdds = 0.01;
+  maxGenerations = 100;
+  directions: {
+    origin: string,
+    destination: string,
+    waypoints: any[]
+  } = {
+    origin: "",
+    destination: "",
+    waypoints: []
+  }
 
   locationsList: locationObject[] = [];
 
@@ -54,6 +63,11 @@ export class ControlService {
     this.currentLitter = null;
     this.showTimeline = false;
     this.lines = [];
+    this.directions = {
+      origin: "",
+      destination: "",
+      waypoints: []
+    };
   }
 
   addLocations(route) {
@@ -63,6 +77,23 @@ export class ControlService {
       this.lines.push(this.locationsList[index])
     }
     this.lines.push(this.locationsList[route[0]]);
+  }
+
+  drawDirections(route) {
+    for (let i of route) {
+      if (i == 0) {
+        this.directions.origin = this.locationsList[i].name
+        this.directions.destination = this.locationsList[i].name
+      }
+      else {
+        this.directions.waypoints.push(
+          {
+            location: this.locationsList[i].name,
+            stopover: true
+          })
+      }
+    }
+    console.log("Directions: ", this.directions)
   }
 
   delay(ms: number) {
@@ -86,8 +117,8 @@ export class ControlService {
         console.log('Distance: ', litterHistory[i][1])
       }
       this.showingHistory = false;
+      this.drawDirections(litterHistory[litterHistory.length - 1][0])
     }
-    
   }
 
   getHttpRequestBody(): string {
@@ -110,7 +141,10 @@ export class ControlService {
 
   callOptimizePath$(distance_dict) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
-    const params = new HttpParams().set('distance_dict', JSON.stringify(distance_dict)).set('BATCH_SIZE', 400).set('MUTATION_ODDS', 0.02).set('MAX_GENERATIONS', 150)
+    const params = new HttpParams().set('distance_dict', JSON.stringify(distance_dict))
+    .set('BATCH_SIZE', this.batchSize)
+    .set('MUTATION_ODDS', this.mutationOdds)
+    .set('MAX_GENERATIONS', this.maxGenerations)
     console.log('request: ', params)
      if (distance_dict !== []) {
       return this.httpService.post<any[]>('/optimize-path', {
@@ -138,6 +172,7 @@ export class ControlService {
         console.log(error)
         this.isLoading = false;
       });
+      
   }
 
 }
