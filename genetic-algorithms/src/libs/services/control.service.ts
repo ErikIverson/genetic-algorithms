@@ -5,6 +5,7 @@ import { DistanceParsingService } from './distance-parsing.service';
 import { DistanceMatrix } from '../../assets/testFolder/testLocations';
 import { switchMap, take } from 'rxjs/operators';
 import { litterHistory } from '../../assets/testFolder/litter-history';
+import { AppComponent } from 'src/app/app.component';
 
 export interface locationObject {
   name: string,
@@ -34,11 +35,7 @@ export class ControlService {
     origin: string,
     destination: string,
     waypoints: any[]
-  } = {
-    origin: "",
-    destination: "",
-    waypoints: []
-  }
+  } = null
 
   locationsList: locationObject[] = [];
 
@@ -63,11 +60,7 @@ export class ControlService {
     this.currentLitter = null;
     this.showTimeline = false;
     this.lines = [];
-    this.directions = {
-      origin: "",
-      destination: "",
-      waypoints: []
-    };
+    this.directions = null;
   }
 
   addLocations(route) {
@@ -80,6 +73,11 @@ export class ControlService {
   }
 
   drawDirections(route) {
+    this.directions = {
+      origin : '',
+      destination: '',
+      waypoints: []
+    }
     for (let i of route) {
       if (i == 0) {
         this.directions.origin = this.locationsList[i].name
